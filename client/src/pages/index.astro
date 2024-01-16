@@ -1,0 +1,141 @@
+---
+import Badge from "./Badge.astro";
+import Link from "./Link.astro";
+import CodeEditorComponent from "../components/CodeEditorComponent.jsx";
+
+let level = "easy"; // This could be a dynamic value
+let variant: string;
+
+switch (level) {
+	case "easy":
+		variant = "success";
+		break;
+	case "medium":
+		variant = "warning";
+		break;
+	case "hard":
+		variant = "danger";
+		break;
+	default:
+		variant = "default";
+}
+
+const links = [
+	{ href: "#", class: "text-indigo-600 hover:underline", children: "Hint" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../base.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<main class="max-w-4xl mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
+			<h1 class="text-2xl font-bold mb-4">88. Merge Sorted Array</h1>
+			<section class="flex space-x-4 mb-4">
+				<Badge variant={variant}>{level}</Badge>
+				{
+					links.map((link) => (
+						<Link class={link.class} href={link.href}>
+							{link.children}
+						</Link>
+					))
+				}
+			</section>
+			<p class="mb-4">
+				You are given two integer arrays
+				<code class="bg-gray-100 rounded px-1">nums1</code> and{" "}
+				<code class="bg-gray-100 rounded px-1">nums2</code>, sorted in
+				non-decreasing order, and two integers{" "}
+				<code class="bg-gray-100 rounded px-1">m</code> and <code
+					class="bg-gray-100 rounded px-1">n</code
+				>, representing the number of elements in <code
+					class="bg-gray-100 rounded px-1">nums1</code
+				> and{" "}
+				<code class="bg-gray-100 rounded px-1">nums2</code>
+				respectively.{"\n      "}
+			</p>
+			<p class="mb-4">
+				Merge
+				<code class="bg-gray-100 rounded px-1">nums1</code> and{" "}
+				<code class="bg-gray-100 rounded px-1">nums2</code>
+				into a single array sorted in non-decreasing order.{"\n      "}
+			</p>
+			<p class="mb-4">
+				The final sorted array should not be returned by the function,
+				but instead be stored
+				<em>inside the array</em>
+				<code class="bg-gray-100 rounded px-1">nums1</code>. To
+				accommodate this,{" "}
+				<code class="bg-gray-100 rounded px-1">nums1</code> has a length
+				of{" "}
+				<code class="bg-gray-100 rounded px-1">m + n</code>, where the
+				first{" "}
+				<code class="bg-gray-100 rounded px-1">m</code> elements denote the
+				elements that should be merged, and the last <code
+					class="bg-gray-100 rounded px-1">n</code
+				> elements are set to{" "}
+				<code class="bg-gray-100 rounded px-1">0</code> and should be ignored.{
+					" "
+				}
+				<code class="bg-gray-100 rounded px-1">nums2</code> has a length
+				of{" "}
+				<code class="bg-gray-100 rounded px-1">n</code>.{"\n      "}
+			</p>
+			<section class="mb-4">
+				<h2 class="text-xl font-semibold mb-2">Example 1:</h2>
+				<p class="mb-2">
+					<strong>Input:</strong>
+					<code class="bg-gray-100 rounded px-1"
+						>nums1 = [1,2,3,0,0,0]</code
+					>,{" "}
+					<code class="bg-gray-100 rounded px-1">m = 3</code>,{" "}
+					<code class="bg-gray-100 rounded px-1">nums2 = [2,5,6]</code
+					>,{" "}
+					<code class="bg-gray-100 rounded px-1">n = 3</code>
+				</p>
+				<p class="mb-2">
+					<strong>Output:</strong>
+					<code class="bg-gray-100 rounded px-1">[1,2,2,3,5,6]</code>
+				</p>
+				<p>
+					<strong>Explanation:</strong> The arrays we are merging are{
+						" "
+					}
+					<code class="bg-gray-100 rounded px-1">[1,2,3]</code> and{
+						" "
+					}
+					<code class="bg-gray-100 rounded px-1">[2,5,6]</code>. The
+					result of the merge is{" "}
+					<code class="bg-gray-100 rounded px-1">[1,2,2,3,5,6]</code> with
+					the underlined elements coming from{" "}
+					<code class="bg-gray-100 rounded px-1">nums1</code>.
+				</p>
+			</section>
+			<section>
+				<h2 class="text-xl font-semibold mb-2">Example 2:</h2>
+				<p class="mb-2">
+					<strong>Input:</strong>
+					<code class="bg-gray-100 rounded px-1">nums1 = [1]</code>,{
+						" "
+					}
+					<code class="bg-gray-100 rounded px-1">m = 1</code>,{" "}
+					<code class="bg-gray-100 rounded px-1">nums2 = []</code>,{
+						" "
+					}
+					<code class="bg-gray-100 rounded px-1">n = 0</code>
+				</p>
+				<p>
+					<strong>Output:</strong>
+					<code class="bg-gray-100 rounded px-1">[1]</code>
+				</p>
+			</section>
+			<CodeEditorComponent client:load />
+		</main>
+	</body>
+</html>
+

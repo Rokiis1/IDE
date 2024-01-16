@@ -1,0 +1,15 @@
+---
+/* Define your component's props
+ * @typedef {Object} LinkProps
+ * @property {string} href - The URL that the link points to.
+ * @property {string} class - The CSS classes to apply to the link.
+ * @property {string} children - The text content of the link.
+ */
+let href = Astro.props.href;
+let className = Astro.props.class;
+let children = Astro.props.children;
+---
+
+<a href={href} class={className}>
+    <slot>{children}</slot>
+</a>

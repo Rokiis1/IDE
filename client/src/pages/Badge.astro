@@ -1,0 +1,52 @@
+---
+/* Define your component's props
+ * @typedef {Object} BadgeProps
+ * @property {('default' | 'success' | 'warning' | 'danger')} variant - The variant of the badge.
+ */
+
+ let { variant } = Astro.props;
+
+ /**
+ * @typedef {Object} VariantDetails
+ * @property {string} class - The class for the variant.
+ * @property {string} level - The level for the variant.
+ */
+
+/**
+ * @param {string} variant
+ * @returns {VariantDetails}
+ */
+
+/**
+ * @typedef {Object} VariantDetails
+ * @property {string} class - The class for the variant.
+ * @property {string} level - The level for the variant.
+ */
+
+function getVariantDetails(variant: string | number) {
+  const variantClasses = {
+    default: 'bg-gray-300 text-gray-800',
+    success: 'bg-green-500 text-white',
+    danger: 'bg-red-500 text-white',
+    warning: 'bg-yellow-500 text-black',
+  };
+
+  const levelMapping = {
+    default: 'Default',
+    success: 'Easy',
+    danger: 'High',
+    warning: 'Medium',
+  };
+
+  return {
+    class: variantClasses[variant],
+    level: levelMapping[variant],
+  };
+}
+
+const variantDetails = getVariantDetails(variant);
+---
+
+<span class={`inline-block px-3 py-1 rounded-full text-sm font-medium ${variantDetails.class}`}>
+  {variantDetails.level}
+</span>
